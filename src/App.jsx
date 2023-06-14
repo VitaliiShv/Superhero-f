@@ -1,5 +1,11 @@
-function App() {
-  return <div>Superhero</div>;
-}
+import UserRoutes from "./components/UserRoutes";
+
+const App = () => {
+  return (
+    <>
+      <UserRoutes />
+    </>
+  );
+};
 
 export default App;
