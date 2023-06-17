@@ -1,11 +1,11 @@
-import SHist from "../../components/SHlist/SHlist";
 import AddSuperhero from "../../components/AddSuperhero/AddSuperhero";
+import SHlist from "../../components/SHlist/SHlist";
 
 const HeroesPage = () => {
   return (
     <>
-      <SHist />
-      <AddSuperhero />
+      <button>Add superhero</button>
+      <SHlist />
     </>
   );
 };

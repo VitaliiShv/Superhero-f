@@ -1,30 +1,45 @@
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import FormikControl from "./FormikControl";
+import { useDispatch } from "react-redux";
+// import { addItem } from "../../redux/superheroSlice";
 
 const AddSuperhero = () => {
+  // const dispatch = useDispatch();
   const initialValues = {
     nickname: "",
     realName: "",
-    originDescription: "",
-    superpowers: "",
-    catchPhrase: "",
-    images: "",
+    // originDescription: "",
+    // superpowers: "",
+    // catchPhrase: "",
+    // images: "",
   };
 
   const validationSchema = Yup.object({
     nickname: Yup.string().required(),
     realName: Yup.string().required(),
-    originDescription: Yup.string().required(),
-    superpowers: Yup.string().required(),
-    catchPhrase: Yup.string().required(),
-    images: Yup.mixed().required("Image is required"),
+    // originDescription: Yup.string().required(),
+    // superpowers: Yup.string().required(),
+    // catchPhrase: Yup.string().required(),
+    // images: Yup.mixed().required("Image is required"),
   });
 
   const handleSubmit = (values, submitProps) => {
-    console.log(values);
+    // dispatch(addItem(values));
     submitProps.resetForm();
   };
+
+  //   const onAddItem = (data) => {
+  //     setList((prevList) => {
+  //       const newItem = {
+  //         name: data.name,
+  //         realName: data.realName,
+  //       };
+
+  //       return [newItem, ...prevList];
+  //     });
+  //     return true;
+  //   };
 
   return (
     <Formik
@@ -47,7 +62,7 @@ const AddSuperhero = () => {
             name="realName"
           />
 
-          <FormikControl
+          {/* <FormikControl
             control="textarea"
             label="Origin Description"
             name="originDescription"
@@ -61,15 +76,15 @@ const AddSuperhero = () => {
             control="textarea"
             label="Catch Phrase"
             name="catchPhrase"
-          />
+          /> */}
 
-          <FormikControl
+          {/* <FormikControl
             control="input"
             type="file"
             multiple
             label="Superhero Photo"
             name="images"
-          />
+          /> */}
 
           <button type="submit">Submit</button>
         </Form>

@@ -1,7 +1,11 @@
 import Superhero from "../../components/Superhero/Superhero";
 
 const HeroPage = () => {
-  return <Superhero />;
+  return (
+    <>
+      <Superhero />
+    </>
+  );
 };
 
 export default HeroPage;
