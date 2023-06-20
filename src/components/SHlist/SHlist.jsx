@@ -1,46 +1,43 @@
-import React from "react";
 import SuperheroCard from "./SuperheroCard/SuperheroCard";
-import { useSelector } from "react-redux";
-import { fetchAllSuperheroes } from "../../redux/operations";
-import { getAllSuperheroes } from "../../redux/selectors";
-import { useDispatch } from "react-redux";
-import { useEffect } from "react";
+import { useState } from "react";
+import Superhero from "../Superhero/Superhero";
+import { Modal, Grid } from "@mui/material";
 
-const SHlist = () => {
-  const superheroes = useSelector(getAllSuperheroes);
-  const dispatch = useDispatch();
+const SHlist = ({ items }) => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [superhero, setSuperhero] = useState({});
 
-  useEffect(() => {
-    dispatch(fetchAllSuperheroes());
-  }, [dispatch]);
+  console.log(items);
 
-  const els = superheroes.map(
-    ({
-      _id,
-      nickname,
-      real_name,
-      images,
-      origin_description,
-      superpowers,
-      catch_phrase,
-    }) => (
+  const toggleModal = (id) => {
+    setIsModalOpen(!isModalOpen);
+    setSuperhero(items.find((item) => item.id === id));
+  };
+
+  const els = items.map(({ id, nickname, images }) => (
+    <Grid item xs={2} sm={4} md={4} key={id}>
       <SuperheroCard
-        key={_id}
-        id={_id}
+        id={id}
         nickname={nickname}
-        real_name={real_name}
         images={images}
-        origin_description={origin_description}
-        superpowers={superpowers}
-        catch_phrase={catch_phrase}
+        toggleModal={toggleModal}
       />
-    )
-  );
+    </Grid>
+  ));
 
   return (
     <>
       <h1>Superheroes</h1>
-      <ul>{els}</ul>
+      <Grid
+        container
+        spacing={{ xs: 2, md: 3 }}
+        columns={{ xs: 4, sm: 8, md: 12 }}
+      >
+        {els}
+      </Grid>
+      <Modal open={isModalOpen} onClose={toggleModal}>
+        <Superhero item={superhero} />
+      </Modal>
     </>
   );
 };

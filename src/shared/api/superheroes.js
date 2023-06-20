@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const instance = axios.create({
-  baseURL: "https://superheroes-backend-j5u6.onrender.com/api",
+  baseURL: "https://647ca4c5c0bae2880ad1036e.mockapi.io/api",
 });
 
 export const getAllSuperheroes = async () => {
