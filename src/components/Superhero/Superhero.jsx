@@ -1,6 +1,5 @@
-import { Card } from "@mui/material";
-import { useSelector } from "react-redux";
-import { getAllSuperheroes } from "../../redux/selectors";
+import React from "react";
+import { Card, DialogContent } from "@mui/material";
 
 const style = {
   position: "absolute",
@@ -13,26 +12,30 @@ const style = {
   borderRadius: 3,
 };
 
-const Superhero = ({ item }) => {
-  const { nickname, realName, originDescription, superpowers } = item;
+const Superhero = React.forwardRef((props, ref) => {
+  const { nickname, realName, originDescription, superpowers, images } =
+    props.item;
 
   return (
-    <Card sx={style}>
-      <img className="mainPicture" src={item.images} alt="img" />
+    <Card sx={style} ref={ref} tabIndex={0}>
+      <img className="mainPicture" src={images} alt="img" />
       <p>Nickname: {nickname}</p>
       <p>Realname: {realName}</p>
       <p>Origin Description: {originDescription}</p>
       <p>Superpowers: {superpowers}</p>
-      {/* <ul>
-        images:
-        {item.images.map((image) => (
-          <li key={image}>
-            <img src={image} alt="img" />
-          </li>
-        ))}
-      </ul> */}
     </Card>
   );
-};
+});
 
 export default Superhero;
+
+{
+  /* <ul>
+     images:
+     {item.images.map((image) => (
+       <li key={image}>
+         <img src={image} alt="img" />
+       </li>
+     ))}
+   </ul> */
+}
