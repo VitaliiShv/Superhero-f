@@ -1,28 +1,20 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { Card, DialogContent } from "@mui/material";
-
-const style = {
-  position: "absolute",
-  top: "50%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
-  bgcolor: "background.paper",
-  boxShadow: 24,
-  p: 4,
-  borderRadius: 3,
-};
+import styles from "./Superhero.module.css";
 
 const Superhero = React.forwardRef((props, ref) => {
-  const { nickname, realName, originDescription, superpowers, images } =
+  const { nickname, realName, originDescription, superpowers, images, id } =
     props.item;
 
   return (
-    <Card sx={style} ref={ref} tabIndex={0}>
-      <img className="mainPicture" src={images} alt="img" />
+    <Card className={styles.card} ref={ref} tabIndex={0}>
+      <img className="mainPicture" src={images} alt={nickname} />
       <p>Nickname: {nickname}</p>
       <p>Realname: {realName}</p>
       <p>Origin Description: {originDescription}</p>
       <p>Superpowers: {superpowers}</p>
+      <Link to={`/hero/edit/${id}`}>Edit</Link>
     </Card>
   );
 });

@@ -7,8 +7,6 @@ const SHlist = ({ items }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [superhero, setSuperhero] = useState({});
 
-  console.log(items);
-
   const toggleModal = (id) => {
     setIsModalOpen(!isModalOpen);
     setSuperhero(items.find((item) => item.id === id));
